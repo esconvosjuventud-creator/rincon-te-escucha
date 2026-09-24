@@ -3,6 +3,7 @@ import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { FloatingIdeaButton } from '../components/FloatingIdeaButton'
 import { Hero } from '../sections/Hero'
+import { ShareSection } from '../sections/ShareSection'
 import { AboutSection } from '../sections/AboutSection'
 import { VoiceValues } from '../sections/VoiceValues'
 import { ProposalForm } from '../sections/ProposalForm'
@@ -36,6 +37,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <ShareSection />
         <AboutSection />
         <VoiceValues />
         <ProposalForm />
