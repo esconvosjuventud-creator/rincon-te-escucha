@@ -39,8 +39,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://yjpyszgxloerkmfgtuzd.supabase.co' }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY || 'sb_publishable_ZyllPsNGdJhoCd7Vz82uSQ_C89X4p4k' }}
           VITE_BASE_PATH: ${{ format('/{0}/', github.event.repository.name) }}
 
       - name: Configure Pages
