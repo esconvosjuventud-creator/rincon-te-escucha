@@ -16,8 +16,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-sky/15 bg-white/95 backdrop-blur">
       <div className="container-rte flex h-20 items-center justify-between gap-4">
-        <a href="#inicio" className="focus-ring rounded-xl" aria-label="Ir al inicio">
-          <BrandLogo className="h-11 w-auto sm:h-12" />
+        <a href="#inicio" className="focus-ring flex min-w-0 items-center gap-2 rounded-xl" aria-label="Ir al inicio">
+          <span className="relative block h-16 w-24 shrink-0 overflow-hidden sm:hidden" aria-hidden="true">
+            <BrandLogo className="absolute -left-3 -top-4 h-[94px] w-auto max-w-none" />
+          </span>
+          <span className="max-w-24 text-[11px] font-black uppercase leading-[1.1] text-navy sm:hidden" aria-hidden="true">
+            Oficina de la Juventud<br />Flores
+          </span>
+          <BrandLogo className="hidden h-16 w-auto sm:block" />
         </a>
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegación principal">
           {links.map(([label, href]) => (
