@@ -1,6 +1,6 @@
 export const AGE_RANGES = ['12 a 14', '15 a 17', '18 a 20', '21 a 24', '25 a 29', 'Prefiero no decirlo'] as const
 
-export const LOCATIONS = ['Trinidad', 'Ismael Cortinas', 'Andresito', 'La Casilla', 'Otra localidad', 'Prefiero no decirlo'] as const
+export const LOCATIONS = ['Trinidad', 'Ismael Cortinas', 'Andresito', 'La Casilla', 'Juan José Castro', 'Otra localidad', 'Prefiero no decirlo'] as const
 
 export const CATEGORIES = [
   'Educación', 'Trabajo', 'Emprendimientos', 'Deportes', 'Cultura', 'Música', 'Arte',

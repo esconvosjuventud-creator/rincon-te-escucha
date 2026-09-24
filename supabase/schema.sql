@@ -26,7 +26,7 @@ create table if not exists public.youth_proposals (
     age_range is null or age_range in ('12 a 14','15 a 17','18 a 20','21 a 24','25 a 29','Prefiero no decirlo')
   ),
   constraint youth_proposals_location_check check (
-    location is null or location in ('Trinidad','Ismael Cortinas','Andresito','La Casilla','Otra localidad','Prefiero no decirlo')
+    location is null or location in ('Trinidad','Ismael Cortinas','Andresito','La Casilla','Juan José Castro','Otra localidad','Prefiero no decirlo')
   ),
   constraint youth_proposals_category_check check (
     category in ('Educación','Trabajo','Emprendimientos','Deportes','Cultura','Música','Arte','Tecnología','Salud y bienestar','Medio ambiente','Espacios públicos','Recreación','Vivienda','Movilidad','Actividades juveniles','Otro')
@@ -48,6 +48,13 @@ create table if not exists public.youth_proposals (
 );
 
 create index if not exists youth_proposals_created_at_idx on public.youth_proposals (created_at desc);
+
+-- También actualiza instalaciones donde la tabla ya existía.
+alter table public.youth_proposals drop constraint if exists youth_proposals_location_check;
+alter table public.youth_proposals add constraint youth_proposals_location_check check (
+  location is null or location in ('Trinidad','Ismael Cortinas','Andresito','La Casilla','Juan José Castro','Otra localidad','Prefiero no decirlo')
+);
+
 create index if not exists youth_proposals_category_idx on public.youth_proposals (category);
 create index if not exists youth_proposals_status_idx on public.youth_proposals (status);
 create index if not exists youth_proposals_location_idx on public.youth_proposals (location);
