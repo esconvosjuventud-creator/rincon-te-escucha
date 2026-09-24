@@ -155,18 +155,9 @@ En el repositorio:
 
 `Settings → Pages → Build and deployment → Source → GitHub Actions`
 
-### 2. Crear secretos del repositorio
+### 2. Configuración de Supabase para el build
 
-En:
-
-`Settings → Secrets and variables → Actions → New repository secret`
-
-Crear:
-
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
-
-La clave debe ser la **publishable key** o la legacy `anon`; nunca una clave secreta/service role.
+El workflow ya incluye la URL y la clave **publishable** del proyecto institucional `JUVENTUD FLORES – GESTIÓN`. Estas son públicas por diseño y la protección de los datos depende de RLS y Auth. Si necesitás rotarlas, configurá los secretos `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` en `Settings → Secrets and variables → Actions`, que tienen prioridad sobre los valores incluidos. Nunca uses una clave secreta ni `service_role`.
 
 ### 3. Base path
 
