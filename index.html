@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es-UY">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#073B5C" />
+    <title>Rincón Te Escucha | Oficina de la Juventud – Flores</title>
+    <meta name="description" content="Un espacio de la Oficina de la Juventud de Flores para escuchar ideas, propuestas e intereses de adolescentes y jóvenes." />
+    <meta property="og:title" content="Rincón Te Escucha | Oficina de la Juventud – Flores" />
+    <meta property="og:description" content="Acá tu voz importa. Compartí ideas, propuestas e intereses para construir más oportunidades para las juventudes de Flores." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="logo-es-con-vos.png" />
+    <link rel="icon" href="logo-es-con-vos.png" />
+    <script>
+      (function(l) {
+        if (l.search && l.search.startsWith('?/')) {
+          var decoded = l.search.slice(2).split('&').map(function(s) { return s.replace(/~and~/g, '&') }).join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + '/' + decoded + l.hash);
+        }
+      }(window.location));
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
