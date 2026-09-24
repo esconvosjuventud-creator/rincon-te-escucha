@@ -29,12 +29,12 @@ export function Header() {
         <a href="#tu-idea" className="focus-ring hidden rounded-full bg-navy px-5 py-3 text-sm font-black text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-ink sm:inline-flex lg:hidden xl:inline-flex">
           Contanos tu idea
         </a>
-        <button className="focus-ring rounded-xl p-2 text-navy lg:hidden" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-label="Abrir menú">
+        <button className="focus-ring rounded-xl p-2.5 text-navy lg:hidden" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="rte-mobile-nav" aria-label={open ? 'Cerrar menú' : 'Abrir menú'}>
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <nav className="border-t border-sky/15 bg-white px-4 pb-5 pt-3 lg:hidden" aria-label="Navegación móvil">
+        <nav id="rte-mobile-nav" className="border-t border-sky/15 bg-white px-4 pb-5 pt-3 lg:hidden" aria-label="Navegación móvil">
           <div className="mx-auto flex max-w-7xl flex-col gap-1">
             {links.map(([label, href]) => (
               <a key={href} href={href} onClick={() => setOpen(false)} className="focus-ring rounded-xl px-4 py-3 font-bold text-navy hover:bg-pale">
