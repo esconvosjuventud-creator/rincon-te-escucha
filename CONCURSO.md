@@ -16,7 +16,7 @@ Integración en Rincón Te Escucha. No reemplaza Home, el formulario de ideas, A
 
 Proyecto existente: `yjpyszgxloerkmfgtuzd` (JUVENTUD FLORES – GESTIÓN).
 
-Ya se aplicaron las migraciones `rural_women_contest_2026` y `rural_women_explicit_privileges`. `supabase/contest.sql` es una instalación consolidada para entornos nuevos; **no ejecutarla de nuevo sobre el proyecto actual**.
+Ya se aplicaron las migraciones `rural_women_contest_2026`, `rural_women_explicit_privileges` y `rural_women_score_array_shape`. `supabase/contest.sql` es una instalación consolidada para entornos nuevos; **no ejecutarla de nuevo sobre el proyecto actual**.
 
 La función `supabase/functions/rural-women-submit/index.ts` está desplegada. En el despliegue deben incluirse su archivo y `src/contest/config.ts`, conservando las rutas relativas. Verifica la API key pública del proyecto dentro de la función; `verify_jwt=false` permite participar sin crear una cuenta. No se usa ninguna clave privilegiada en el navegador.
 

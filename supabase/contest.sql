@@ -53,6 +53,7 @@ create table public.rural_women_evaluations (
  juror_id uuid not null references auth.users(id),scores integer[] not null,
  notes text not null default '' check(length(notes)<=5000),updated_at timestamptz not null default now(),
  primary key(submission_id,juror_id),
+ constraint rural_women_scores_shape check(array_ndims(scores)=1 and array_lower(scores,1)=1),
  check(array_length(scores,1)=10 and array_position(scores,null) is null and 0<=all(scores) and scores[1]<=20 and scores[2]<=15 and scores[3]<=15 and scores[4]<=10 and scores[5]<=10 and scores[6]<=10 and scores[7]<=5 and scores[8]<=5 and scores[9]<=5 and scores[10]<=5)
 );
 alter table public.rural_women_evaluations enable row level security;
