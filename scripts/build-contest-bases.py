@@ -10,7 +10,6 @@ c=json.loads(__import__('subprocess').check_output(['node','--experimental-strip
 months=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','setiembre','octubre','noviembre','diciembre']
 def resolve(m):
  k=m.group(1);v=c[k]
- if k=='jury':return ', '.join(v)
  if k.endswith('At') or k.startswith('evaluation'):
   d=datetime.fromisoformat(v);return f'{d.day} de {months[d.month-1]} de {d.year}'
  return str(v)

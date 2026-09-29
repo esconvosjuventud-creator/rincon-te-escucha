@@ -9,7 +9,6 @@ export const contestConfig = {
   resultAt: '2026-10-18T00:00:00-03:00',
   awardAt: '2026-10-18T00:00:00-03:00',
   prize: 'USD 100', timezone: 'America/Montevideo',
-  jury: ['Iliana Garrone', 'Nicolás Lugo', 'Agustín Goday', 'Marisa Ramos', 'María Rosa Curuchet'],
   state: 'automatic' as 'automatic' | 'closed',
   route: '/concurso-mujeres-rurales',
   url: 'https://esconvosjuventud-creator.github.io/rincon-te-escucha/concurso-mujeres-rurales',
