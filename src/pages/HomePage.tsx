@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ContestBanner } from '../contest/ContestBanner'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { FloatingIdeaButton } from '../components/FloatingIdeaButton'
@@ -37,6 +38,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <ContestBanner />
         <ShareSection />
         <AboutSection />
         <VoiceValues />

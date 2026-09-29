@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { ContestAdmin } from '../contest/ContestAdmin'
 import { Navigate } from 'react-router-dom'
 import { BarChart3, Eye, Filter, LoaderCircle, LogOut, MessageCircle, RefreshCw, Search, ShieldCheck, UsersRound, X } from 'lucide-react'
 import { BrandLogo } from '../components/BrandLogo'
@@ -122,6 +123,7 @@ function AdminDashboard() {
       <header className="border-b border-slate-200 bg-white"><div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-4 py-4 sm:px-6"><div className="flex items-center gap-4"><BrandLogo className="h-11 w-auto max-w-[190px] object-contain" /><div className="hidden border-l border-slate-200 pl-4 sm:block"><p className="text-xs font-black uppercase tracking-wider text-sky-700">Rincón Te Escucha</p><p className="font-black text-navy">Panel de gestión</p></div></div><div className="flex items-center gap-2"><button onClick={() => void load()} className="focus-ring rounded-xl p-2.5 text-navy hover:bg-pale" title="Actualizar"><RefreshCw size={19} /></button><a href={import.meta.env.BASE_URL} className="focus-ring hidden rounded-xl px-4 py-2 text-sm font-black text-navy hover:bg-pale sm:inline-flex">Ver sitio</a><button onClick={logout} className="focus-ring inline-flex items-center gap-2 rounded-xl bg-navy px-4 py-2.5 text-sm font-black text-white"><LogOut size={17} /> <span className="hidden sm:inline">Salir</span></button></div></div></header>
 
       <main className="mx-auto max-w-[1500px] px-4 py-7 sm:px-6 sm:py-10">
+        <ContestAdmin />
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-sm font-black uppercase tracking-[.18em] text-sky-700">Resumen</p><h1 className="mt-1 text-3xl font-black tracking-tight text-navy sm:text-4xl">Lo que están diciendo las juventudes</h1></div><p className="text-sm font-bold text-slate-500">{items.length} propuestas en total</p></div>
 
         <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">{statusOptions.map((s) => <div key={s} className="rounded-3xl bg-white p-5 shadow-sm"><p className="text-xs font-black uppercase tracking-wider text-slate-400">{STATUS_LABELS[s]}</p><p className="mt-2 text-4xl font-black text-navy">{stats[s]}</p></div>)}</div>
