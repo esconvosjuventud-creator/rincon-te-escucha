@@ -7,11 +7,7 @@ import { track, type Result } from './api'
 import { ContestForm } from './ContestForm'
 import { Terms } from './Terms'
 import './contest.css'
-function Share() {
-  const [notice,setNotice]=useState('')
-  const text=`🎨 ¿Cómo representarías a las Mujeres Rurales de Flores? Participá del ${c.title}. 📍 Exclusivo para habitantes del departamento de Flores. ✅ Gratuito ✅ Sin límite de edad 🏆 Premio: ${c.prize} 📅 Hasta el ${dateLabel(c.closesAt)}. Creá. Participá. Representá. ${c.url}`
-  return <section id="compartir"><h2>Compartí el concurso</h2><div className="actions"><a className="btn" target="_blank" rel="noopener noreferrer" href={`https://wa.me/?text=${encodeURIComponent(text)}`} onClick={()=>void track('share')}>Enviar por WhatsApp</a><a className="btn secondary" target="_blank" rel="noopener noreferrer" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(c.url)}`} onClick={()=>void track('share')}>Facebook</a><button className="btn secondary" onClick={async()=>{try{await navigator.clipboard.writeText(c.url);setNotice('Enlace copiado.');void track('share')}catch{setNotice(c.url)}}}>Copiar enlace</button></div><p role="status">{notice}</p></section>
-}
+import { ContestShare } from './ContestShare'
 export default function ContestPage() {
   const [now,setNow]=useState(new Date()),[result,setResult]=useState<Result|null>(null)
   useEffect(()=>{const title=document.title;document.title=`${c.title} · Mujeres Rurales de Flores`;void track('visit');const id=setInterval(()=>setNow(new Date()),1000);if(supabase)void supabase.from('rural_women_results').select('*').eq('published',true).maybeSingle().then(({data})=>setResult(data));return()=>{clearInterval(id);document.title=title}},[])
@@ -31,6 +27,6 @@ export default function ContestPage() {
     <section><h2>¿Está listo tu diseño?</h2>{checklist.map(t=><label className="check" key={t}><input type="checkbox"/>{t}</label>)}{state==='open'&&<a className="btn" href="#inscripcion" onClick={()=>void track('start_click')}>Quiero participar ↗</a>}</section>
     <section id="inscripcion">{state==='open'?<ContestForm/>:<div className="card"><h2>{state==='upcoming'?'Pronto podrás presentar tu propuesta':'Convocatoria finalizada'}</h2><p>Consultá las fechas, las bases y las novedades en esta página.</p></div>}</section>
     <section id="preguntas"><h2>Preguntas frecuentes</h2>{faq.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</section>
-    <section id="bases"><h2>Bases del concurso</h2><details onToggle={e=>{if(e.currentTarget.open)void track('terms')}}><summary>Leer las bases completas online</summary><Terms/></details><a className="btn secondary" href={`${import.meta.env.BASE_URL}contest/bases.pdf`} download onClick={()=>void track('download')}>Descargar bases en PDF</a></section><Share/></main><footer className="card"><strong>{c.contact}</strong><p>Con el apoyo de la Dirección de Promoción y Desarrollo.</p><Link to={c.contactPath}>Contacto institucional</Link> · <Link to="/">Volver a Rincón Te Escucha</Link></footer>
+    <section id="bases"><h2>Bases del concurso</h2><details onToggle={e=>{if(e.currentTarget.open)void track('terms')}}><summary>Leer las bases completas online</summary><Terms/></details><a className="btn secondary" href={`${import.meta.env.BASE_URL}contest/bases.pdf`} download onClick={()=>void track('download')}>Descargar bases en PDF</a></section><ContestShare/></main><footer className="card"><strong>{c.contact}</strong><p>Con el apoyo de la Dirección de Promoción y Desarrollo.</p><Link to={c.contactPath}>Contacto institucional</Link> · <Link to="/">Volver a Rincón Te Escucha</Link></footer>
   </div></div>
 }

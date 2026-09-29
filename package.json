@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "node scripts/build-contest-share.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.117.1",
