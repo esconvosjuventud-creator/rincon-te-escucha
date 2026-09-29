@@ -15,7 +15,7 @@ export const contestConfig = {
   url: 'https://esconvosjuventud-creator.github.io/rincon-te-escucha/concurso-mujeres-rurales',
   contact: 'Oficina de la Juventud · Intendencia Departamental de Flores',
   contactPath: '/#contacto', bucket: 'rural-women-contest-2026',
-  maxFileBytes: 10 * 1024 * 1024, termsVersion: '2026-09-29',
+  maxFileBytes: 10 * 1024 * 1024, termsVersion: '2026-09-29-menores',
   mimeTypes: ['image/png', 'image/jpeg', 'application/pdf'],
 }
 export const criteria = [
@@ -60,6 +60,7 @@ export function validateEntry(e: Entry, step?: number, now = new Date()): Record
     const birth = new Date(e.birth_date+'T12:00:00Z')
     if(!/^\d{4}-\d{2}-\d{2}$/.test(e.birth_date) || !Number.isFinite(birth.getTime()) || !Number.isFinite(ageAt(e.birth_date,now)) || ageAt(e.birth_date,now)<0 || birth.toISOString().slice(0,10)!==e.birth_date) errors.birth_date='Ingresá una fecha de nacimiento válida.'
     if(!/^\d+$/.test(String(e.age)) || Number(e.age)<0 || Number(e.age)>130) errors.age='Revisá la edad.'
+    else if(!errors.birth_date && Number(e.age)!==ageAt(e.birth_date,now)) errors.age='La edad debe coincidir con la fecha de nacimiento.'
     if(e.department!==contestConfig.eligibleDepartment) errors.department='El concurso es exclusivo para habitantes del departamento de Flores.'
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.email)) errors.email='Ingresá un correo válido.'
     if(e.phone.replace(/\D/g,'').length<6) errors.phone='Ingresá un teléfono válido.'
