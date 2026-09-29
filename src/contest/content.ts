@@ -8,8 +8,9 @@ export const tips = [
   ['Contanos la historia','La memoria conceptual ayuda al jurado a comprender tu idea.'],
 ]
 export const faq = [
-  ['¿Tengo que ser diseñador/a?','No. No necesitás formación ni experiencia previa.'],['¿Existe límite de edad?','No. La participación es individual, libre y gratuita.'],
-  ['¿Puedo participar si no vivo en el medio rural?','Sí. No es obligatorio vivir en el medio rural.'],['¿Puedo hacer el diseño a mano?','Sí, siempre que presentes una versión digital clara.'],
+  ['¿Quiénes pueden participar?','Únicamente habitantes del departamento de Flores, tanto del medio urbano como del rural. Si vivís en otro departamento, no podés participar en esta convocatoria.'],
+  ['¿Tengo que ser diseñador/a?','No. No necesitás formación ni experiencia previa.'],['¿Existe límite de edad?','No. Pueden participar habitantes de Flores de cualquier edad. La participación es individual y gratuita.'],
+  ['¿Puedo participar si no vivo en el medio rural?','Sí, siempre que vivas en el departamento de Flores. Pueden participar habitantes de zonas urbanas y rurales.'],['¿Puedo hacer el diseño a mano?','Sí, siempre que presentes una versión digital clara.'],
   ['¿Qué archivos puedo enviar?','PNG, JPG/JPEG o PDF. Hasta 10 MB por archivo.'],['¿Necesito entregar un archivo vectorial?','No en la instancia inicial. Si ganás, podrán solicitarte originales o archivos de mayor resolución cuando existan.'],
   ['¿Puedo presentar un enlace?','Sí. Revisá que se pueda abrir sin solicitar permisos y que no venza durante la evaluación.'],['¿Puedo usar Canva?','Sí. Debés contar con los derechos necesarios sobre los elementos utilizados.'],
   ['¿Puedo utilizar inteligencia artificial?','Sí, debés declarar qué herramienta utilizaste y cómo. Se mantienen los requisitos de originalidad y derechos de terceros.'],

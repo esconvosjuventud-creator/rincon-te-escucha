@@ -8,13 +8,14 @@ export const contestConfig = {
   evaluationEnd: '2026-10-15T23:59:59-03:00',
   resultAt: '2026-10-18T00:00:00-03:00',
   awardAt: '2026-10-18T00:00:00-03:00',
+  eligibleDepartment: 'Flores',
   prize: 'USD 100', timezone: 'America/Montevideo',
   state: 'automatic' as 'automatic' | 'closed',
   route: '/concurso-mujeres-rurales',
   url: 'https://esconvosjuventud-creator.github.io/rincon-te-escucha/concurso-mujeres-rurales',
   contact: 'Oficina de la Juventud · Intendencia Departamental de Flores',
   contactPath: '/#contacto', bucket: 'rural-women-contest-2026',
-  maxFileBytes: 10 * 1024 * 1024, termsVersion: '2026-09-28',
+  maxFileBytes: 10 * 1024 * 1024, termsVersion: '2026-09-29',
   mimeTypes: ['image/png', 'image/jpeg', 'application/pdf'],
 }
 export const criteria = [
@@ -48,7 +49,7 @@ export type Entry = {
   guardian_name:string; guardian_document:string; guardian_phone:string; guardian_email:string;
   guardian_accepted:boolean; authorship_accepted:boolean; rights_accepted:boolean; terms_accepted:boolean; institutional_use_accepted:boolean;
 }
-export const emptyEntry: Entry = {full_name:'',birth_date:'',age:'',city:'',department:'Flores',phone:'',email:'',proposal_name:'',proposal_description:'',palette:'',submission_method:'file',external_main_url:'',external_complementary_url:'',tools_used:[],ai_details:'',guardian_name:'',guardian_document:'',guardian_phone:'',guardian_email:'',guardian_accepted:false,authorship_accepted:false,rights_accepted:false,terms_accepted:false,institutional_use_accepted:false}
+export const emptyEntry: Entry = {full_name:'',birth_date:'',age:'',city:'',department:contestConfig.eligibleDepartment,phone:'',email:'',proposal_name:'',proposal_description:'',palette:'',submission_method:'file',external_main_url:'',external_complementary_url:'',tools_used:[],ai_details:'',guardian_name:'',guardian_document:'',guardian_phone:'',guardian_email:'',guardian_accepted:false,authorship_accepted:false,rights_accepted:false,terms_accepted:false,institutional_use_accepted:false}
 export function isMinor(e: Entry, now = new Date()) { return ageAt(e.birth_date,now)<18 || Number(e.age)<18 }
 export function validateEntry(e: Entry, step?: number, now = new Date()): Record<string,string> {
   const errors:Record<string,string> = {}
@@ -59,7 +60,7 @@ export function validateEntry(e: Entry, step?: number, now = new Date()): Record
     const birth = new Date(e.birth_date+'T12:00:00Z')
     if(!/^\d{4}-\d{2}-\d{2}$/.test(e.birth_date) || !Number.isFinite(birth.getTime()) || !Number.isFinite(ageAt(e.birth_date,now)) || ageAt(e.birth_date,now)<0 || birth.toISOString().slice(0,10)!==e.birth_date) errors.birth_date='Ingresá una fecha de nacimiento válida.'
     if(!/^\d+$/.test(String(e.age)) || Number(e.age)<0 || Number(e.age)>130) errors.age='Revisá la edad.'
-    if(!departments.includes(e.department)) errors.department='Seleccioná un departamento.'
+    if(e.department!==contestConfig.eligibleDepartment) errors.department='El concurso es exclusivo para habitantes del departamento de Flores.'
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.email)) errors.email='Ingresá un correo válido.'
     if(e.phone.replace(/\D/g,'').length<6) errors.phone='Ingresá un teléfono válido.'
   }
