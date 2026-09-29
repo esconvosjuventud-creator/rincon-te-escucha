@@ -4,7 +4,7 @@ import { track } from './api'
 function termsText(text:string) {
   return text.replace(/\{\{(\w+)\}\}/g,(_,key:string)=>{
     const v=contestConfig[key as keyof typeof contestConfig]
-    return key==='jury'?contestConfig.jury.join(', '):key.endsWith('At') || key.startsWith('evaluation')?dateLabel(String(v)):String(v)
+    return key.endsWith('At') || key.startsWith('evaluation')?dateLabel(String(v)):String(v)
   })
 }
 export function Terms() {
